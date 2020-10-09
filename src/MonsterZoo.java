@@ -3,9 +3,21 @@ import java.util.Arrays;
 import java.util.List;
 
 
-// class Ball {
-// 	int counts = 10; // モンスターを捕まえられるボールの数
-// }
+class Ball {
+  int count;
+	
+	public Ball() {
+		this.count = 10; // モンスターを捕まえられるボールの数
+	}
+
+	public Integer getCount() {
+		return this.count;
+	}
+
+	public void setCount(Integer num) {
+		count = count + num;
+	}
+}
 
 // class Monster {
 
@@ -25,8 +37,14 @@ import java.util.List;
 
 
 public class MonsterZoo {
+	Ball ball = new Ball();
+	ball.setCount(1);
+
+	// System.out.printf(ball.getCount());
+
+
 	double distance=0.0;//歩いた距離
-	int balls=10;//モンスターを捕まえられるボールの数
+	int balls=ball.getCount();//モンスターを捕まえられるボールの数
 	int fruits=0;//ぶつけるとモンスターが捕まえやすくなるフルーツ
 
 	//卵は最大9個まで持てる．卵を取得するとeggにtrueが代入され，
@@ -45,6 +63,8 @@ public class MonsterZoo {
 
 	//呼び出すと1km distanceが増える
 	void move(){
+		// System.out.printf(ball.getCount());
+
 		this.distance++;
 		for(int i=0;i<this.egg.length;i++){//卵は移動距離が進むと孵化するため，何km移動したかを更新する
 			if(this.egg[i]==true){
@@ -60,6 +80,7 @@ public class MonsterZoo {
 			int e=(int)(Math.random()*2);
 			System.out.println("ボールを"+b+"個，"+"フルーツを"+f+"個"+"卵を"+e+"個Getした！");
 			this.balls=this.balls+b;
+			// ball.count()+=b;
 			this.fruits=this.fruits+f;
 			if(e>=1){//卵を1つ以上Getしたら
 				//egg[]に10個以上卵がない場合は新しい卵データをセットする
